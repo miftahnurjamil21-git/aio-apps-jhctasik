@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JHC - Platform Terintegrasi IT</title>
+    <link rel="icon" type="image/png" href="assets/images/logo-IT.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="logo">
+          <i class="fas fa-hospital"></i>
+          <span>All IN ONE APPS RS JHC TASIKMALAYA</span>
+        </div>
+        <div class="nav-links">
+          <a href="#home">Home</a>
+          <a href="#features">Fitur</a>
+          <a href="#contact">Kontak</a>
+          <button class="search-toggle" onclick="toggleSearch()">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+        <div class="search-bar" id="searchBar">
+          <input
+            type="text"
+            id="featureSearch"
+            placeholder="Cari fitur..."
+            onkeyup="searchFeatures()"
+          />
+          <button class="search-close" onclick="toggleSearch()">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <h1>Platform Manajemen Aplikasi</h1>
+        <p>
+          Solusi lengkap untuk mengelola seluruh aplikasi operasional rumah
+          sakit Yang dikembangkan oleh Tim IT RS JHC Tasikmalaya.
+        </p>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+      <div class="container">
+        <div class="features-grid">
+          <!-- Help Desk -->
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-headset"></i>
+            </div>
+            <h3>Help Desk IT</h3>
+            <p>
+              Layanan dukungan teknis dan administrasi untuk membantu
+              menyelesaikan masalah IT dengan cepat dan efisien.
+            </p>
+            <a
+              href="#"
+              class="btn-feature"
+              data-url="https://sinal.rsjantungtasikmalaya.my.id/public/index.php?page=helpdesk_report_form"
+              onclick="openLink(event)"
+              >Akses</a
+            >
+          </div>
+
+          <!-- KerBil -->
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-file-invoice-dollar"></i>
+            </div>
+            <h3>KerBil</h3>
+            <p>
+              Kertas Billing - Kelola dan proses semua dokumen billing dengan
+              mudah dan terorganisir.
+            </p>
+            <a
+              href="#"
+              class="btn-feature"
+              data-url="http://103.184.16.155:312/kerbil/"
+              onclick="openLink(event)"
+              >Akses</a
+            >
+          </div>
+
+          <!-- APAR -->
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-fire-extinguisher"></i>
+            </div>
+            <h3>APAR</h3>
+            <p>
+              Alat Pemadam Api Ringan - Monitor dan kelola inventori APAR untuk
+              keselamatan kerja.
+            </p>
+            <a
+              href="#"
+              class="btn-feature"
+              data-url="https://apar.rsjantungtasikmalaya.my.id/"
+              onclick="openLink(event)"
+              >Akses</a
+            >
+          </div>
+
+          <!-- Code Warning -->
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <h3>Code Blue</h3>
+            <p>
+              Pengumuman langsung dan panggilan code blue untuk koordinasi
+              respon cepat di seluruh departemen rumah sakit.
+            </p>
+            <a
+              href="#"
+              class="btn-feature"
+              data-url="https://CB.rsjantungtasikmalaya.my.id"
+              onclick="openLink(event)"
+              >Akses</a
+            >
+          </div>
+
+          <!-- Antrian Admisi -->
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <h3>Antrian Admisi</h3>
+            <p>
+              Kelola antrian pasien di bagian admisi dengan sistem manajemen
+              antrian yang efisien.
+            </p>
+            <a
+              href="#"
+              class="btn-feature"
+              data-url="http://192.168.10.142/antrian2/display.php"
+              onclick="openLink(event)"
+              >Akses</a
+            >
+          </div>
+
+          <!-- Asset IT -->
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-laptop"></i>
+            </div>
+            <h3>Asset IT</h3>
+            <p>
+              Pantau dan kelola semua aset teknologi informasi, perangkat, dan
+              lisensi software.
+            </p>
+            <a
+              href="#"
+              class="btn-feature"
+              data-url="https://sinal.rsjantungtasikmalaya.my.id/public/index.php?page=home"
+              onclick="openLink(event)"
+              >Akses</a
+            >
+          </div>
+
+          <!-- Cuti Broadcasting -->
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-broadcast-tower"></i>
+            </div>
+            <h3>Cuti Broadcasting</h3>
+            <p>
+              Kelola jadwal cuti karyawan dan siarkan informasi penting ke
+              seluruh organisasi.
+            </p>
+            <a
+              href="#"
+              class="btn-feature"
+              data-url=""
+              onclick="openLink(event)"
+              >Akses</a
+            >
+          </div>
+
+          <!-- SPO -->
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-book"></i>
+            </div>
+            <h3>SPO IT</h3>
+            <p>
+              Standar Prosedur Operasional IT- Akses dan kelola panduan prosedur
+              operasional IT.
+            </p>
+            <a
+              href="#"
+              class="btn-feature"
+              data-url=""
+              onclick="openLink(event)"
+              >Akses</a
+            >
+          </div>
+
+          <!-- KESIA -->
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-headset"></i>
+            </div>
+            <h3>KESIA</h3>
+            <p>Aplikasi SIMRS untuk pelayanan pasien rumah sakit.</p>
+            <a
+              href="#"
+              class="btn-feature"
+              data-url="https://jhc-tasik.kesia.id/"
+              onclick="openLink(event)"
+              >Akses</a
+            >
+          </div>
+          <!-- METABASE -->
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-headset"></i>
+            </div>
+            <h3>METABASE</h3>
+            <p>Aplikasi Laporan data pelayanan pasien rumah sakit.</p>
+            <a
+              href="#"
+              class="btn-feature"
+              data-url="https://dashboard.jhc-tasik.kesia.id/"
+              onclick="openLink(event)"
+              >Akses</a
+            >
+          </div>
+          <!-- ODOO -->
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-headset"></i>
+            </div>
+            <h3>ODOO</h3>
+            <p>Aplikasi Back Office untuk pelayanan rumah sakit.</p>
+            <a
+              href="#"
+              class="btn-feature"
+              data-url="https://odoo.jhc-tasik.kesia.id/"
+              onclick="openLink(event)"
+              >Akses</a
+            >
+          </div>
+
+          <!-- CODE -->
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-tools"></i>
+            </div>
+            <h3>CODE WARNING</h3>
+            <p>Peringatan Code - Audio play untuk code-code di rumah sakit.</p>
+            <a
+              href="#"
+              class="btn-feature"
+              data-url="https://miftahnurjamil.github.io/aio-apps-jhctasik/frontend/code-warning.html"
+              onclick="openLink(event)"
+              >Akses</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h4>Tentang AIO APPS IT</h4>
+            <p>
+              Platform Manajemen Aplikasi Terintegrasi yang dikembangkan oleh
+              Tim IT RS JHC Tasikmalaya
+            </p>
+          </div>
+          <div class="footer-section">
+            <h4>Kontak</h4>
+            <p>Email: it_rsjhc@gmail.com</p>
+          </div>
+          <div class="footer-section">
+            <h4>Media Sosial</h4>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 IT RS JHC TASIKMALAYA. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
