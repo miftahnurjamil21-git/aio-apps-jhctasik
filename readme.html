@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Read Me Fitur</title>
+    <link rel="icon" type="image/png" href="assets/images/logo-IT.png" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .tab-content-inner {
+        width: 100%;
+        font-size: 1.08rem;
+        line-height: 1.7;
+        color: #444;
+        margin-top: 1.2rem;
+        text-align: left;
+      }
+      .tab-list {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+        margin-top: 1.2rem;
+        padding-left: 0;
+      }
+      .tab-list-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 1.05rem;
+      }
+      .tab-list-item i {
+        color: #2563eb;
+        font-size: 1.2em;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Hero Section -->
+    <section class="hero" style="margin-bottom: 2rem">
+      <div class="hero-content" style="max-width: 100%; width: 100%">
+        <div class="readme-header-grid">
+          <button
+            onclick="window.location.href='index.html'"
+            class="btn-dashboard"
+          >
+            Kembali ke Dashboard
+          </button>
+          <div class="readme-header-center">
+            <h1 id="feature-title">Read Me</h1>
+            <p id="feature-desc">
+              Detail dokumentasi fitur aplikasi RS JHC Tasikmalaya.
+            </p>
+          </div>
+          <div></div>
+        </div>
+      </div>
+    </section>
+    <div class="container" style="margin-top: -40px">
+      <div
+        class="feature-card"
+        style="max-width: 100%; width: 100%; margin: 0 auto"
+      >
+        <div class="tab-container">
+          <div class="tabs">
+            <button class="tab active" onclick="showTab('informasi')">
+              Informasi
+            </button>
+            <button class="tab" onclick="showTab('before')">Before</button>
+            <button class="tab" onclick="showTab('after')">After</button>
+            <button class="tab" onclick="showTab('efisiensi')">
+              Efisiensi
+            </button>
+            <button class="tab" onclick="showTab('spo')">SPO (PDF)</button>
+          </div>
+          <div class="tab-content" id="tab-informasi">
+            Informasi fitur akan tampil di sini.
+          </div>
+          <div class="tab-content" id="tab-before" style="display: none">
+            Penjelasan kondisi sebelum fitur diimplementasikan.
+          </div>
+          <div class="tab-content" id="tab-after" style="display: none">
+            Penjelasan kondisi setelah fitur diimplementasikan.
+          </div>
+          <div class="tab-content" id="tab-efisiensi" style="display: none">
+            Penjelasan efisiensi yang didapatkan.
+          </div>
+          <div class="tab-content" id="tab-spo" style="display: none">
+            <iframe
+              class="pdf-viewer"
+              id="spo-pdf"
+              src=""
+              type="application/pdf"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer -->
+    <footer class="footer" id="contact" style="margin-top: 2rem">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h4>Tentang AIO APPS IT</h4>
+            <p>
+              Platform Manajemen Aplikasi Terintegrasi yang dikembangkan oleh
+              Tim IT RS JHC Tasikmalaya
+            </p>
+          </div>
+          <div class="footer-section">
+            <h4>Kontak</h4>
+            <p>Email: it_rsjhc@gmail.com</p>
+          </div>
+          <div class="footer-section">
+            <h4>Media Sosial</h4>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 IT RS JHC TASIKMALAYA. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <script>
+      // Tab logic
+      function showTab(tab) {
+        document
+          .querySelectorAll(".tab")
+          .forEach((btn) => btn.classList.remove("active"));
+        document
+          .querySelectorAll(".tab-content")
+          .forEach((tc) => (tc.style.display = "none"));
+        document
+          .querySelector(".tab[onclick=\"showTab('" + tab + "')\"]")
+          .classList.add("active");
+        document.getElementById("tab-" + tab).style.display = "block";
+      }
+
+      // Data fitur
+      const fiturData = {
+        "Help Desk IT": {
+          informasi:
+            "Portal Help Desk IT adalah platform sentralisasi layanan teknologi informasi di RS Jantung Tasikmalaya. Portal ini mengelola seluruh permintaan dukungan teknis, insiden sistem, dan permintaan akses data. Sistem terintegrasi ini menjamin ketersediaan (availability) dan integritas data pada ekosistem SIMRS demi mendukung pelayanan klinis yang berkelanjutan.",
+          informasiList: [
+            "- Sentralisasi permintaan dukungan IT",
+            "- Integrasi dengan ekosistem SIMRS",
+            "- Menjamin availability & integritas data",
+            "- Mendukung pelayanan klinis 24/7",
+          ],
+          before:
+            "Sebelum standarisasi melalui sistem Help Desk, pelaporan gangguan IT belum terintegrasi secara sistemik. Akibatnya:",
+          beforeList: [
+            "- Akuntabilitas penanganan masalah rendah",
+            "- Tidak ada pencatatan KPI (Response Time, Resolution Time)",
+            "- Performa infrastruktur IT sulit dipantau",
+            "- Evaluasi & audit internal menjadi terhambat",
+          ],
+          after: "Dengan implementasi sistem ticketing Help Desk:",
+          afterList: [
+            "- Seluruh alur kerja IT terdokumentasi digital & komprehensif",
+            "- Kategorisasi masalah berdasarkan tingkat urgensi (SLA)",
+            "- Penugasan personel otomatis & audit trail valid",
+            "- Koordinasi antar unit lebih terukur, transparan, dan pasti",
+          ],
+          efisiensi:
+            "Pemanfaatan sistem ini memberikan dampak signifikan pada efisiensi biaya operasional (OPEX):",
+          efisiensiList: [
+            "- Optimalisasi manajemen aset & pemeliharaan preventif",
+            "- Waktu henti operasional (System Downtime) berkurang 50%",
+            "- Produktivitas tenaga medis meningkat",
+            "- Mendukung kebijakan paperless & efisiensi birokrasi",
+          ],
+          spo: "SPO HELPDESK.pdf",
+        },
+        KerBil: {
+          informasi:
+            "Kertas Billing - Kelola dan proses semua dokumen billing dengan mudah dan terorganisir.",
+          before:
+            "Proses billing dilakukan manual, rawan kesalahan dan kehilangan dokumen.",
+          after: "Billing terdigitalisasi, mudah dilacak dan lebih aman.",
+          efisiensi:
+            "Mempercepat proses administrasi dan mengurangi human error.",
+          spo: "SPO KERBIL.pdf",
+        },
+        APAR: {
+          informasi:
+            "Monitor dan kelola inventori APAR untuk keselamatan kerja.",
+          before:
+            "Inventarisasi APAR dilakukan manual dan tidak terpantau berkala.",
+          after: "Data APAR terupdate otomatis dan mudah dipantau.",
+          efisiensi: "Meningkatkan keselamatan kerja dan efisiensi monitoring.",
+          spo: "SPO APAR.pdf",
+        },
+        "Code Blue": {
+          informasi:
+            "Pengumuman langsung dan panggilan code blue untuk koordinasi respon cepat di seluruh departemen rumah sakit.",
+          before: "Koordinasi darurat lambat karena tidak ada sistem terpusat.",
+          after:
+            "Panggilan darurat terintegrasi dan cepat diterima seluruh tim.",
+          efisiensi:
+            "Menyelamatkan waktu kritis dalam penanganan kegawatdaruratan.",
+          spo: "SPO CODE BLUE.pdf",
+        },
+        "Antrian Admisi": {
+          informasi:
+            "Kelola antrian pasien di bagian admisi dengan sistem manajemen antrian yang efisien.",
+          before: "Antrian pasien tidak teratur dan sering terjadi penumpukan.",
+          after: "Antrian lebih teratur, pasien terlayani lebih cepat.",
+          efisiensi:
+            "Mengurangi waktu tunggu pasien dan meningkatkan pelayanan.",
+          spo: "SPO ANTRIAN ADMISI.pdf",
+        },
+        "Asset IT": {
+          informasi:
+            "Pantau dan kelola semua aset teknologi informasi, perangkat, dan lisensi software.",
+          before: "Data aset IT tersebar dan sulit dipantau.",
+          after: "Aset IT terdata rapi dan mudah dipantau.",
+          efisiensi: "Memudahkan audit dan pengelolaan aset.",
+          spo: "SPO ASSET IT.pdf",
+        },
+        "Cuti Broadcasting": {
+          informasi:
+            "Kelola jadwal cuti karyawan dan siarkan informasi penting ke seluruh organisasi.",
+          before: "Informasi cuti tidak tersampaikan ke seluruh tim.",
+          after: "Semua staf mendapat info cuti secara real-time.",
+          efisiensi: "Mengurangi miskomunikasi dan meningkatkan koordinasi.",
+          spo: "SPO CUTI BROADCASTING.pdf",
+        },
+        KESIA: {
+          informasi: "Aplikasi SIMRS untuk pelayanan pasien rumah sakit.",
+          before: "Pencatatan medis manual dan rawan kehilangan data.",
+          after: "Data pasien terintegrasi dan mudah diakses.",
+          efisiensi: "Meningkatkan efisiensi pelayanan medis.",
+          spo: "SPO KESIA.pdf",
+        },
+        METABASE: {
+          informasi: "Aplikasi Laporan data pelayanan pasien rumah sakit.",
+          before: "Laporan dibuat manual dan sulit dianalisis.",
+          after: "Laporan otomatis dan mudah divisualisasikan.",
+          efisiensi: "Mempercepat pengambilan keputusan berbasis data.",
+          spo: "SPO METABASE.pdf",
+        },
+        ODOO: {
+          informasi: "Aplikasi Back Office untuk pelayanan rumah sakit.",
+          before: "Administrasi back office tidak terintegrasi.",
+          after: "Semua proses administrasi terpusat dan efisien.",
+          efisiensi: "Mengurangi duplikasi data dan mempercepat proses bisnis.",
+          spo: "SPO ODOO.pdf",
+        },
+        "CODE WARNING": {
+          informasi:
+            "Peringatan Code - Audio play untuk code-code di rumah sakit.",
+          before: "Peringatan code dilakukan manual dan tidak seragam.",
+          after: "Peringatan code otomatis dan seragam di seluruh area.",
+          efisiensi: "Meningkatkan respons dan keamanan.",
+          spo: "SPO CODE WARNING.pdf",
+        },
+      };
+
+      // Get feature from URL
+      function getFeatureName() {
+        const params = new URLSearchParams(window.location.search);
+        return params.get("feature") || "Fitur";
+      }
+
+      // Set feature title dan isi tab
+      const feature = getFeatureName();
+      document.getElementById("feature-title").textContent =
+        "Read Me: " + feature;
+
+      // Isi tab sesuai fitur
+      function setTabContent() {
+        const data = fiturData[feature] || {};
+        // Tab Informasi
+        let infoHTML = `<div class="tab-content-inner">${
+          data.informasi || "Informasi fitur akan tampil di sini."
+        }</div>`;
+        if (data.informasiList && data.informasiList.length > 0) {
+          infoHTML += `<div class=\"tab-content-inner\"><div class=\"tab-list\">`;
+          data.informasiList.forEach((item) => {
+            infoHTML += `<div class=\"tab-list-item\"><i class='fas fa-check-circle'></i><span>${item}</span></div>`;
+          });
+          infoHTML += `</div></div>`;
+        }
+        document.getElementById("tab-informasi").innerHTML = infoHTML;
+
+        // Tab Before
+        let beforeHTML = `<div class="tab-content-inner">${
+          data.before || "Penjelasan kondisi sebelum fitur diimplementasikan."
+        }</div>`;
+        if (data.beforeList && data.beforeList.length > 0) {
+          beforeHTML += `<div class=\"tab-content-inner\"><div class=\"tab-list\">`;
+          data.beforeList.forEach((item) => {
+            beforeHTML += `<div class=\"tab-list-item\"><i class='fas fa-minus-circle'></i><span>${item}</span></div>`;
+          });
+          beforeHTML += `</div></div>`;
+        }
+        document.getElementById("tab-before").innerHTML = beforeHTML;
+
+        // Tab After
+        let afterHTML = `<div class="tab-content-inner">${
+          data.after || "Penjelasan kondisi setelah fitur diimplementasikan."
+        }</div>`;
+        if (data.afterList && data.afterList.length > 0) {
+          afterHTML += `<div class=\"tab-content-inner\"><div class=\"tab-list\">`;
+          data.afterList.forEach((item) => {
+            afterHTML += `<div class=\"tab-list-item\"><i class='fas fa-check-circle'></i><span>${item}</span></div>`;
+          });
+          afterHTML += `</div></div>`;
+        }
+        document.getElementById("tab-after").innerHTML = afterHTML;
+
+        // Tab Efisiensi
+        let efisienHTML = `<div class="tab-content-inner">${
+          data.efisiensi || "Penjelasan efisiensi yang didapatkan."
+        }</div>`;
+        if (data.efisiensiList && data.efisiensiList.length > 0) {
+          efisienHTML += `<div class=\"tab-content-inner\"><div class=\"tab-list\">`;
+          data.efisiensiList.forEach((item) => {
+            efisienHTML += `<div class=\"tab-list-item\"><i class='fas fa-bolt'></i><span>${item}</span></div>`;
+          });
+          efisienHTML += `</div></div>`;
+        }
+        document.getElementById("tab-efisiensi").innerHTML = efisienHTML;
+        // SPO PDF
+        if (data.spo) {
+          document.getElementById("spo-pdf").src = `assets/pdf/${data.spo}`;
+        } else {
+          document.getElementById("spo-pdf").src = "";
+        }
+      }
+      setTabContent();
+    </script>
+  </body>
+</html>

@@ -7,7 +7,11 @@ let recordedAudioUrl = null;
 let isPlaying = false;
 let recordingStartTime = null;
 let recordingDuration = 0;
-
+// Fungsi untuk redirect ke halaman Read Me
+function openReadMe(featureName) {
+  const url = `readme.html?feature=${encodeURIComponent(featureName)}`;
+  window.location.href = url;
+}
 // Audio state for Code Warning
 let currentAudio = null;
 let currentCodeName = null;
