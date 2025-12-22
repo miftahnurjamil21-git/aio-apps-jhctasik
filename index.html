@@ -17,7 +17,7 @@
       <div class="nav-container">
         <div class="logo">
           <i class="fas fa-hospital"></i>
-          <span>DASHBOARD APPS RS JHC TASIKMALAYA</span>
+          <span>DASHBOARD JHC APP</span>
         </div>
         <div class="nav-links">
           <a href="#home">Home</a>
@@ -213,15 +213,101 @@
             </button>
           </div>
 
-          <!-- SPO -->
+          <!-- Reminder System -->
           <div class="feature-card">
             <div class="feature-icon">
               <i class="fas fa-book"></i>
             </div>
-            <h3>SPO IT</h3>
+            <h3>Reminder System</h3>
+            <p>Reminder System melalui whatsapp smart brodcasting.</p>
+            <button class="btn-readme" onclick="openReadMe('Reminder System')">
+              Read Me
+            </button>
+          </div>
+
+          <!-- Booster Installer -->
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-book"></i>
+            </div>
+            <h3>Booster Installer</h3>
+            <p>Sistem Recovery Berbasis Disk Image</p>
+            <button
+              class="btn-readme"
+              onclick="openReadMe('Booster Installer')"
+            >
+              Read Me
+            </button>
+          </div>
+          <!-- Dashboard Chatbot -->
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-book"></i>
+            </div>
+            <h3>Dashboard Chatbot</h3>
+            <p>Monitoring Whats App Chatbot Jhe-c</p>
+            <a
+              href="#"
+              class="btn-feature"
+              data-url=""
+              onclick="openLink(event)"
+              >Akses</a
+            >
+            <button
+              class="btn-readme"
+              onclick="openReadMe('Dashboard Chatbot')"
+            >
+              Read Me
+            </button>
+          </div>
+          <!-- Dashboard Jhc Apps -->
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-book"></i>
+            </div>
+            <h3>Dashboard Jhc Apps</h3>
+            <p>Monitoring & Governance Pengembangan Aplikasi</p>
+            <a
+              href="#"
+              class="btn-feature"
+              data-url=""
+              onclick="openLink(event)"
+              >Akses</a
+            >
+            <button
+              class="btn-readme"
+              onclick="openReadMe('Dashboard Jhc Apps')"
+            >
+              Read Me
+            </button>
+          </div>
+          <!-- Drm Request -->
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-book"></i>
+            </div>
+            <h3>DRM Request</h3>
+            <p>Permintaan & Tracking Dokumen Rekam Medis Elektronik Pasien</p>
+            <a
+              href="#"
+              class="btn-feature"
+              data-url=""
+              onclick="openLink(event)"
+              >Akses</a
+            >
+            <button class="btn-readme" onclick="openReadMe('DRM Request')">
+              Read Me
+            </button>
+          </div>
+          <!-- DRP Server -->
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-book"></i>
+            </div>
+            <h3>DRP Server</h3>
             <p>
-              Standar Prosedur Operasional IT- Akses dan kelola panduan prosedur
-              operasional IT.
+              Disaster Recovery Plan - Rencana dan prosedur pemulihan data IT
+              rumah sakit.
             </p>
             <a
               href="#"
@@ -230,18 +316,37 @@
               onclick="openLink(event)"
               >Akses</a
             >
-            <button class="btn-readme" onclick="openReadMe('SPO IT')">
+            <button class="btn-readme" onclick="openReadMe('DRP Server')">
               Read Me
             </button>
           </div>
 
-          <!-- KESIA -->
+          <!-- NAS -->
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-book"></i>
+            </div>
+            <h3>NAS</h3>
+            <p>Network Attached Storage</p>
+            <a
+              href="#"
+              class="btn-feature"
+              data-url=""
+              onclick="openLink(event)"
+              >Akses</a
+            >
+            <button class="btn-readme" onclick="openReadMe('NAS')">
+              Read Me
+            </button>
+          </div>
+
+          <!-- Net Support System -->
           <div class="feature-card">
             <div class="feature-icon">
               <i class="fas fa-headset"></i>
             </div>
-            <h3>KESIA</h3>
-            <p>Aplikasi SIMRS untuk pelayanan pasien rumah sakit.</p>
+            <h3>Net Support System</h3>
+            <p>Command Center It Terpusat</p>
             <a
               href="#"
               class="btn-feature"
@@ -249,17 +354,20 @@
               onclick="openLink(event)"
               >Akses</a
             >
-            <button class="btn-readme" onclick="openReadMe('KESIA')">
+            <button
+              class="btn-readme"
+              onclick="openReadMe('Net Support System')"
+            >
               Read Me
             </button>
           </div>
-          <!-- METABASE -->
+          <!-- Pdf Combiner -->
           <div class="feature-card">
             <div class="feature-icon">
               <i class="fas fa-headset"></i>
             </div>
-            <h3>METABASE</h3>
-            <p>Aplikasi Laporan data pelayanan pasien rumah sakit.</p>
+            <h3>Pdf Combiner</h3>
+            <p>Otomatisasi Penggabungan Dokumen Rekam Medis</p>
             <a
               href="#"
               class="btn-feature"
@@ -267,17 +375,17 @@
               onclick="openLink(event)"
               >Akses</a
             >
-            <button class="btn-readme" onclick="openReadMe('METABASE')">
+            <button class="btn-readme" onclick="openReadMe('Pdf Combiner')">
               Read Me
             </button>
           </div>
-          <!-- ODOO -->
+          <!-- Security System – Cloudflare -->
           <div class="feature-card">
             <div class="feature-icon">
               <i class="fas fa-headset"></i>
             </div>
-            <h3>ODOO</h3>
-            <p>Aplikasi Back Office untuk pelayanan rumah sakit.</p>
+            <h3>Security System – Cloudflare</h3>
+            <p>Security System – Cloudflare</p>
             <a
               href="#"
               class="btn-feature"
@@ -285,7 +393,32 @@
               onclick="openLink(event)"
               >Akses</a
             >
-            <button class="btn-readme" onclick="openReadMe('ODOO')">
+            <button
+              class="btn-readme"
+              onclick="openReadMe('Security System – Cloudflare')"
+            >
+              Read Me
+            </button>
+          </div>
+
+          <!-- Speed Boost System -->
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-headset"></i>
+            </div>
+            <h3>Speed Boost System</h3>
+            <p>Optimalisasi Performa Komputer</p>
+            <a
+              href="#"
+              class="btn-feature"
+              data-url="https://odoo.jhc-tasik.kesia.id/"
+              onclick="openLink(event)"
+              >Akses</a
+            >
+            <button
+              class="btn-readme"
+              onclick="openReadMe('Speed Boost System')"
+            >
               Read Me
             </button>
           </div>
@@ -317,7 +450,7 @@
       <div class="container">
         <div class="footer-content">
           <div class="footer-section">
-            <h4>Tentang AIO APPS IT</h4>
+            <h4>Tentang DASHBOARD JHC APP</h4>
             <p>
               Platform Manajemen Aplikasi Terintegrasi yang dikembangkan oleh
               Tim IT RS JHC Tasikmalaya

@@ -7,30 +7,60 @@
     <link rel="icon" type="image/png" href="assets/images/logo-IT.png" />
     <link rel="stylesheet" href="styles.css" />
     <style>
-      .tab-content-inner {
-        width: 100%;
-        font-size: 1.08rem;
-        line-height: 1.7;
-        color: #444;
-        margin-top: 1.2rem;
-        text-align: left;
-      }
-      .tab-list {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 0.5rem;
-        margin-top: 1.2rem;
-        padding-left: 0;
-      }
-      .tab-list-item {
+                  .tab-content {
+                    padding: 0;
+                    margin: 0;
+                  }
+                  .pdf-viewer {
+                    width: 99vw;
+                    max-width: 99vw;
+                    height: 90vh;
+                    border: none;
+                    display: block;
+                    margin: 0;
+                  }
+            .btn-fullscreen {
+              background: #2563eb;
+              color: #fff;
+              border: none;
+              border-radius: 6px;
+              padding: 8px 20px;
+              font-size: 1rem;
+              font-weight: 500;
+              cursor: pointer;
+              box-shadow: 0 2px 8px rgba(37,99,235,0.08);
+              transition: background 0.2s, box-shadow 0.2s;
+            }
+            .btn-fullscreen:hover {
+              background: #1746a0;
+              box-shadow: 0 4px 16px rgba(37,99,235,0.18);
+            }
+      .tab-container .tabs {
+        background: #f7f7f7;
+        border-radius: 12px 12px 0 0;
+        padding: 0 0.5rem;
         display: flex;
-        align-items: center;
-        gap: 10px;
-        font-size: 1.05rem;
+        gap: 0.5rem;
+        border-bottom: 1.5px solid #e0e7ef;
       }
-      .tab-list-item i {
+      .tab {
+        background: transparent;
+        border: none;
+        outline: none;
+        font-size: 1.08rem;
+        font-weight: 500;
+        color: #333;
+        padding: 1rem 2rem 0.7rem 2rem;
+        border-radius: 12px 12px 0 0;
+        cursor: pointer;
+        transition: color 0.2s, background 0.2s;
+        position: relative;
+      }
+      .tab.active {
         color: #2563eb;
-        font-size: 1.2em;
+        background: #fff;
+        box-shadow: 0 -2px 0 0 #2563eb inset;
+        z-index: 2;
       }
     </style>
   </head>
@@ -65,32 +95,33 @@
             <button class="tab active" onclick="showTab('informasi')">
               Informasi
             </button>
-            <button class="tab" onclick="showTab('before')">Before</button>
-            <button class="tab" onclick="showTab('after')">After</button>
-            <button class="tab" onclick="showTab('efisiensi')">
-              Efisiensi
-            </button>
             <button class="tab" onclick="showTab('spo')">SPO (PDF)</button>
           </div>
           <div class="tab-content" id="tab-informasi">
-            Informasi fitur akan tampil di sini.
-          </div>
-          <div class="tab-content" id="tab-before" style="display: none">
-            Penjelasan kondisi sebelum fitur diimplementasikan.
-          </div>
-          <div class="tab-content" id="tab-after" style="display: none">
-            Penjelasan kondisi setelah fitur diimplementasikan.
-          </div>
-          <div class="tab-content" id="tab-efisiensi" style="display: none">
-            Penjelasan efisiensi yang didapatkan.
+            <div style="text-align:right; margin-bottom:8px;">
+              <button onclick="fullscreenPDF('informasi-pdf')" class="btn-fullscreen">Fullscreen</button>
+            </div>
+            <iframe
+              class="pdf-viewer"
+              id="informasi-pdf"
+              type="application/pdf"
+              style="width: 100%; height: 768px; border: none"
+            ></iframe>
+              </button>
+            </div>
           </div>
           <div class="tab-content" id="tab-spo" style="display: none">
+            <div style="text-align:right; margin-bottom:8px;">
+              <button onclick="fullscreenPDF('spo-pdf')" class="btn-fullscreen">Fullscreen</button>
+            </div>
             <iframe
               class="pdf-viewer"
               id="spo-pdf"
-              src=""
               type="application/pdf"
+              style="width: 100%; height: 768px; border: none"
             ></iframe>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -100,7 +131,7 @@
       <div class="container">
         <div class="footer-content">
           <div class="footer-section">
-            <h4>Tentang AIO APPS IT</h4>
+            <h4>Tentang DASHBOARD JHC APP</h4>
             <p>
               Platform Manajemen Aplikasi Terintegrasi yang dikembangkan oleh
               Tim IT RS JHC Tasikmalaya
@@ -124,6 +155,19 @@
       </div>
     </footer>
     <script>
+      // Fungsi untuk fullscreen PDF
+      function fullscreenPDF(id) {
+        var iframe = document.getElementById(id);
+        if (iframe.requestFullscreen) {
+          iframe.requestFullscreen();
+        } else if (iframe.mozRequestFullScreen) {
+          iframe.mozRequestFullScreen();
+        } else if (iframe.webkitRequestFullscreen) {
+          iframe.webkitRequestFullscreen();
+        } else if (iframe.msRequestFullscreen) {
+          iframe.msRequestFullscreen();
+        }
+      }
       // Tab logic
       function showTab(tab) {
         document
@@ -138,127 +182,6 @@
         document.getElementById("tab-" + tab).style.display = "block";
       }
 
-      // Data fitur
-      const fiturData = {
-        "Help Desk IT": {
-          informasi:
-            "Portal Help Desk IT adalah platform sentralisasi layanan teknologi informasi di RS Jantung Tasikmalaya. Portal ini mengelola seluruh permintaan dukungan teknis, insiden sistem, dan permintaan akses data. Sistem terintegrasi ini menjamin ketersediaan (availability) dan integritas data pada ekosistem SIMRS demi mendukung pelayanan klinis yang berkelanjutan.",
-          informasiList: [
-            "- Sentralisasi permintaan dukungan IT",
-            "- Integrasi dengan ekosistem SIMRS",
-            "- Menjamin availability & integritas data",
-            "- Mendukung pelayanan klinis 24/7",
-          ],
-          before:
-            "Sebelum standarisasi melalui sistem Help Desk, pelaporan gangguan IT belum terintegrasi secara sistemik. Akibatnya:",
-          beforeList: [
-            "- Akuntabilitas penanganan masalah rendah",
-            "- Tidak ada pencatatan KPI (Response Time, Resolution Time)",
-            "- Performa infrastruktur IT sulit dipantau",
-            "- Evaluasi & audit internal menjadi terhambat",
-          ],
-          after: "Dengan implementasi sistem ticketing Help Desk:",
-          afterList: [
-            "- Seluruh alur kerja IT terdokumentasi digital & komprehensif",
-            "- Kategorisasi masalah berdasarkan tingkat urgensi (SLA)",
-            "- Penugasan personel otomatis & audit trail valid",
-            "- Koordinasi antar unit lebih terukur, transparan, dan pasti",
-          ],
-          efisiensi:
-            "Pemanfaatan sistem ini memberikan dampak signifikan pada efisiensi biaya operasional (OPEX):",
-          efisiensiList: [
-            "- Optimalisasi manajemen aset & pemeliharaan preventif",
-            "- Waktu henti operasional (System Downtime) berkurang 50%",
-            "- Produktivitas tenaga medis meningkat",
-            "- Mendukung kebijakan paperless & efisiensi birokrasi",
-          ],
-          spo: "SPO HELPDESK.pdf",
-        },
-        KerBil: {
-          informasi:
-            "Kertas Billing - Kelola dan proses semua dokumen billing dengan mudah dan terorganisir.",
-          before:
-            "Proses billing dilakukan manual, rawan kesalahan dan kehilangan dokumen.",
-          after: "Billing terdigitalisasi, mudah dilacak dan lebih aman.",
-          efisiensi:
-            "Mempercepat proses administrasi dan mengurangi human error.",
-          spo: "SPO KERBIL.pdf",
-        },
-        APAR: {
-          informasi:
-            "Monitor dan kelola inventori APAR untuk keselamatan kerja.",
-          before:
-            "Inventarisasi APAR dilakukan manual dan tidak terpantau berkala.",
-          after: "Data APAR terupdate otomatis dan mudah dipantau.",
-          efisiensi: "Meningkatkan keselamatan kerja dan efisiensi monitoring.",
-          spo: "SPO APAR.pdf",
-        },
-        "Code Blue": {
-          informasi:
-            "Pengumuman langsung dan panggilan code blue untuk koordinasi respon cepat di seluruh departemen rumah sakit.",
-          before: "Koordinasi darurat lambat karena tidak ada sistem terpusat.",
-          after:
-            "Panggilan darurat terintegrasi dan cepat diterima seluruh tim.",
-          efisiensi:
-            "Menyelamatkan waktu kritis dalam penanganan kegawatdaruratan.",
-          spo: "SPO CODE BLUE.pdf",
-        },
-        "Antrian Admisi": {
-          informasi:
-            "Kelola antrian pasien di bagian admisi dengan sistem manajemen antrian yang efisien.",
-          before: "Antrian pasien tidak teratur dan sering terjadi penumpukan.",
-          after: "Antrian lebih teratur, pasien terlayani lebih cepat.",
-          efisiensi:
-            "Mengurangi waktu tunggu pasien dan meningkatkan pelayanan.",
-          spo: "SPO ANTRIAN ADMISI.pdf",
-        },
-        "Asset IT": {
-          informasi:
-            "Pantau dan kelola semua aset teknologi informasi, perangkat, dan lisensi software.",
-          before: "Data aset IT tersebar dan sulit dipantau.",
-          after: "Aset IT terdata rapi dan mudah dipantau.",
-          efisiensi: "Memudahkan audit dan pengelolaan aset.",
-          spo: "SPO ASSET IT.pdf",
-        },
-        "Cuti Broadcasting": {
-          informasi:
-            "Kelola jadwal cuti karyawan dan siarkan informasi penting ke seluruh organisasi.",
-          before: "Informasi cuti tidak tersampaikan ke seluruh tim.",
-          after: "Semua staf mendapat info cuti secara real-time.",
-          efisiensi: "Mengurangi miskomunikasi dan meningkatkan koordinasi.",
-          spo: "SPO CUTI BROADCASTING.pdf",
-        },
-        KESIA: {
-          informasi: "Aplikasi SIMRS untuk pelayanan pasien rumah sakit.",
-          before: "Pencatatan medis manual dan rawan kehilangan data.",
-          after: "Data pasien terintegrasi dan mudah diakses.",
-          efisiensi: "Meningkatkan efisiensi pelayanan medis.",
-          spo: "SPO KESIA.pdf",
-        },
-        METABASE: {
-          informasi: "Aplikasi Laporan data pelayanan pasien rumah sakit.",
-          before: "Laporan dibuat manual dan sulit dianalisis.",
-          after: "Laporan otomatis dan mudah divisualisasikan.",
-          efisiensi: "Mempercepat pengambilan keputusan berbasis data.",
-          spo: "SPO METABASE.pdf",
-        },
-        ODOO: {
-          informasi: "Aplikasi Back Office untuk pelayanan rumah sakit.",
-          before: "Administrasi back office tidak terintegrasi.",
-          after: "Semua proses administrasi terpusat dan efisien.",
-          efisiensi: "Mengurangi duplikasi data dan mempercepat proses bisnis.",
-          spo: "SPO ODOO.pdf",
-        },
-        "CODE WARNING": {
-          informasi:
-            "Peringatan Code - Audio play untuk code-code di rumah sakit.",
-          before: "Peringatan code dilakukan manual dan tidak seragam.",
-          after: "Peringatan code otomatis dan seragam di seluruh area.",
-          efisiensi: "Meningkatkan respons dan keamanan.",
-          spo: "SPO CODE WARNING.pdf",
-        },
-      };
-
       // Get feature from URL
       function getFeatureName() {
         const params = new URLSearchParams(window.location.search);
@@ -272,64 +195,12 @@
 
       // Isi tab sesuai fitur
       function setTabContent() {
-        const data = fiturData[feature] || {};
+        // Nama file PDF diambil dari nama fitur
+        const pdfName = feature + ".pdf";
         // Tab Informasi
-        let infoHTML = `<div class="tab-content-inner">${
-          data.informasi || "Informasi fitur akan tampil di sini."
-        }</div>`;
-        if (data.informasiList && data.informasiList.length > 0) {
-          infoHTML += `<div class=\"tab-content-inner\"><div class=\"tab-list\">`;
-          data.informasiList.forEach((item) => {
-            infoHTML += `<div class=\"tab-list-item\"><i class='fas fa-check-circle'></i><span>${item}</span></div>`;
-          });
-          infoHTML += `</div></div>`;
-        }
-        document.getElementById("tab-informasi").innerHTML = infoHTML;
-
-        // Tab Before
-        let beforeHTML = `<div class="tab-content-inner">${
-          data.before || "Penjelasan kondisi sebelum fitur diimplementasikan."
-        }</div>`;
-        if (data.beforeList && data.beforeList.length > 0) {
-          beforeHTML += `<div class=\"tab-content-inner\"><div class=\"tab-list\">`;
-          data.beforeList.forEach((item) => {
-            beforeHTML += `<div class=\"tab-list-item\"><i class='fas fa-minus-circle'></i><span>${item}</span></div>`;
-          });
-          beforeHTML += `</div></div>`;
-        }
-        document.getElementById("tab-before").innerHTML = beforeHTML;
-
-        // Tab After
-        let afterHTML = `<div class="tab-content-inner">${
-          data.after || "Penjelasan kondisi setelah fitur diimplementasikan."
-        }</div>`;
-        if (data.afterList && data.afterList.length > 0) {
-          afterHTML += `<div class=\"tab-content-inner\"><div class=\"tab-list\">`;
-          data.afterList.forEach((item) => {
-            afterHTML += `<div class=\"tab-list-item\"><i class='fas fa-check-circle'></i><span>${item}</span></div>`;
-          });
-          afterHTML += `</div></div>`;
-        }
-        document.getElementById("tab-after").innerHTML = afterHTML;
-
-        // Tab Efisiensi
-        let efisienHTML = `<div class="tab-content-inner">${
-          data.efisiensi || "Penjelasan efisiensi yang didapatkan."
-        }</div>`;
-        if (data.efisiensiList && data.efisiensiList.length > 0) {
-          efisienHTML += `<div class=\"tab-content-inner\"><div class=\"tab-list\">`;
-          data.efisiensiList.forEach((item) => {
-            efisienHTML += `<div class=\"tab-list-item\"><i class='fas fa-bolt'></i><span>${item}</span></div>`;
-          });
-          efisienHTML += `</div></div>`;
-        }
-        document.getElementById("tab-efisiensi").innerHTML = efisienHTML;
-        // SPO PDF
-        if (data.spo) {
-          document.getElementById("spo-pdf").src = `assets/pdf/${data.spo}`;
-        } else {
-          document.getElementById("spo-pdf").src = "";
-        }
+        document.getElementById("informasi-pdf").src = `assets/pdf/informasi/${pdfName}#toolbar=0`;
+        // Tab SPO
+        document.getElementById("spo-pdf").src = `assets/pdf/spo/${pdfName}#toolbar=0`;
       }
       setTabContent();
     </script>
